@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "609242910939",
+    "project_id": "services-storage-b3afa",
+    "storage_bucket": "services-storage-b3afa.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609242910939:android:cf97c27638a1d13feefcfe",
+        "android_client_info": {
+          "package_name": "com.example.services_management"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8rjj3_aTV2YFuxKj_uvPpbw4TSJN-C2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
