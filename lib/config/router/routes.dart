@@ -5,8 +5,10 @@ class Routes {
   // static const login = '/login';
   // static const register = '/register';
 
-  static const splash = '/';
-  static const products = '/products';
+  // static const splash = '/';
+  static const orders = '/orders';
+  // static const products = '/products';
+  static const products = '/';
   static const updateProduct = '/update_product';
   static const registerProduct = '/register_product';
 
@@ -16,10 +18,12 @@ class Routes {
     }
 
     switch (settings.name) {
-      case splash:
-        return buildRoute(const SplashScreen());
+      // case splash:
+      //   return buildRoute(const SplashScreen());
+      case orders:
+        return buildRoute(const OrdersScreen());
       case products:
-        return buildRoute(const ProductScreen());
+        return buildRoute(const ProductsScreen());
       case updateProduct:
         return buildRoute(const UpdateProductScreen());
       case registerProduct:

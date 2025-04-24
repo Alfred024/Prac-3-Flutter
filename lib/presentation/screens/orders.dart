@@ -24,7 +24,37 @@ class _OrdersScreenState extends State<OrdersScreen> {
     return _events[DateTime(day.year, day.month, day.day)] ?? [];
   }
 
-  final orderStatus = ['En proceso', 'Cumplidos', 'Cancelados'];
+  Color _statusColor(String status) {
+    switch (status) {
+      case 'Todos':
+        return Colors.purple;
+      case 'Por cumplir':
+        return Colors.green.shade300;
+      case 'Cancelados':
+        return Colors.red.shade300;
+      case 'Cumplidos':
+        return Colors.grey.shade300;
+      default:
+        return Colors.blue;
+    }
+  }
+
+  Color _statusColorSelected(String status) {
+    switch (status) {
+      case 'Todos':
+        return Colors.purple;
+      case 'Por cumplir':
+        return Colors.green.shade600;
+      case 'Cancelados':
+        return Colors.red.shade600;
+      case 'Cumplidos':
+        return Colors.grey.shade300;
+      default:
+        return Colors.blue;
+    }
+  }
+
+  final orderStatus = ['Todos', 'Por cumplir', 'Cumplidos', 'Cancelados'];
 
   @override
   Widget build(BuildContext context) {
@@ -37,10 +67,19 @@ class _OrdersScreenState extends State<OrdersScreen> {
             child: Padding(
               padding: const EdgeInsets.all(8.0),
               child: Wrap(
+                // alignment: WrapAlignment.center,
+                // crossAxisAlignment: WrapCrossAlignment.center,
                 spacing: 8,
-                children: List.generate(orderStatus.length, (i) {
+                children: List.generate(growable: true, orderStatus.length, (
+                  i,
+                ) {
                   return ChoiceChip(
-                    label: Text(orderStatus[i]),
+                    backgroundColor: _statusColor(orderStatus[i]),
+                    selectedColor: _statusColorSelected(orderStatus[i]),
+                    label: Text(
+                      orderStatus[i],
+                      style: TextStyle(color: Colors.white),
+                    ),
                     selected: _selectedFilter == i,
                     onSelected: (_) => setState(() => _selectedFilter = i),
                   );
@@ -49,27 +88,27 @@ class _OrdersScreenState extends State<OrdersScreen> {
             ),
           ),
 
-          // SliverToBoxAdapter(
-          //   child: Padding(
-          //     padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          //     child: TableCalendar<String>(
-          //       firstDay: DateTime.utc(2020, 1, 1),
-          //       lastDay: DateTime.utc(2030, 12, 31),
-          //       focusedDay: _focusedDay,
-          //       selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
-          //       eventLoader: _getEventsForDay,
-          //       calendarStyle: CalendarStyle(
-          //         markerDecoration: BoxDecoration(shape: BoxShape.circle),
-          //       ),
-          //       onDaySelected: (selectedDay, focusedDay) {
-          //         setState(() {
-          //           _selectedDay = selectedDay;
-          //           _focusedDay = focusedDay;
-          //         });
-          //       },
-          //     ),
-          //   ),
-          // ),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: TableCalendar<String>(
+                firstDay: DateTime.utc(2020, 1, 1),
+                lastDay: DateTime.utc(2030, 12, 31),
+                focusedDay: _focusedDay,
+                selectedDayPredicate: (day) => isSameDay(_selectedDay, day),
+                eventLoader: _getEventsForDay,
+                calendarStyle: CalendarStyle(
+                  markerDecoration: BoxDecoration(shape: BoxShape.circle),
+                ),
+                onDaySelected: (selectedDay, focusedDay) {
+                  setState(() {
+                    _selectedDay = selectedDay;
+                    _focusedDay = focusedDay;
+                  });
+                },
+              ),
+            ),
+          ),
           SliverPadding(
             padding: const EdgeInsets.all(8.0),
             sliver: SliverList(
