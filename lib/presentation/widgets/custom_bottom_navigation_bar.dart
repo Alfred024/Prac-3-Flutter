@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:services_management/config/router/routes.dart';
 import 'package:services_management/config/theme/app_theme.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
@@ -9,6 +10,22 @@ class CustomBottomNavigationBar extends StatelessWidget {
     color: Colors.black12,
     borderRadius: BorderRadius.all(Radius.circular(30)),
   );
+
+  void _onItemTapped(BuildContext context, int index) {
+    switch (index) {
+      case 0:
+        Navigator.pushNamed(context, Routes.orders);
+        break;
+      case 1:
+        Navigator.pushNamed(context, Routes.products);
+        break;
+      case 2:
+        Navigator.pushNamed(context, Routes.login);
+        break;
+      default:
+        Navigator.pushNamed(context, Routes.orders);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +54,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
               label: 'Logout',
             ),
           ],
-          onTap: (value) => {},
+          onTap: (value) => _onItemTapped(context, value),
         ),
       ),
     );

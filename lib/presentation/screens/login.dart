@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:services_management/config/router/routes.dart';
 import 'package:services_management/config/theme/app_theme.dart';
 import 'package:services_management/presentation/widgets/widgets.dart';
 
@@ -100,14 +101,10 @@ class _LoginForm extends StatelessWidget {
             children: [
               Text('¿Aún no tienes una cuenta?', style: textStyles.labelSmall),
               TextButton(
-                onPressed: () {},
+                onPressed: () => Navigator.pushNamed(context, Routes.register),
                 child: const Text(
                   'Crea una aquí',
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.red,
-                  ),
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600),
                 ),
               ),
             ],
