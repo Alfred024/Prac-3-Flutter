@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:services_management/presentation/screens/screens.dart';
 
 class Routes {
-  // static const login = '/login';
-  // static const register = '/register';
-
-  // static const splash = '/';
+  static const splash = '/';
+  static const login = '/login';
+  static const register = '/register';
   static const orders = '/orders';
-  // static const products = '/products';
-  static const products = '/';
+  static const products = '/products';
   static const updateProduct = '/update_product';
   static const registerProduct = '/register_product';
 
@@ -18,8 +16,12 @@ class Routes {
     }
 
     switch (settings.name) {
-      // case splash:
-      //   return buildRoute(const SplashScreen());
+      case splash:
+        return buildRoute(const SplashScreen());
+      case login:
+        return buildRoute(const LoginScreen());
+      case register:
+        return buildRoute(const RegisterScreen());
       case orders:
         return buildRoute(const OrdersScreen());
       case products:

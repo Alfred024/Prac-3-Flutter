@@ -5,7 +5,6 @@ class SplashScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('ME VOY A MOSTRAR...');
     return const Scaffold(
       body: Center(
         child: Column(
